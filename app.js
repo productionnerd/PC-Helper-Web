@@ -1,0 +1,224 @@
+var up = 2;
+var timesthru = 0;
+
+document.getElementById("AMD").style.display = 'flex';
+document.getElementById("Intel").style.display = 'None';
+document.getElementById('intelbottom').style.display = 'none';
+document.getElementById('amdbottom').style.display = 'flex';
+
+function leftClick() {
+    document.getElementById('btn').style.left = '0';
+    document.getElementById("AMD").style.display = 'flex';
+    document.getElementById("Intel").style.display = 'None';
+    document.getElementById('intelbottom').style.display = 'none';
+    document.getElementById('amdbottom').style.display = 'flex';
+}
+
+function rightClick() {
+    document.getElementById('btn').style.left = '120px';
+    document.getElementById("Intel").style.display = 'flex';
+    document.getElementById("AMD").style.display = 'None';
+    document.getElementById('intelbottom').style.display = 'flex';
+    document.getElementById('amdbottom').style.display = 'none';
+}
+
+function someFunction() {
+    let val = parseInt(document.getElementById("pricerange").value);
+   if (timesthru === 0) {
+    if (val > 749 && val < 10001) {
+        document.getElementById("line").style.animation = "loading .5s  forwards cubic-bezier(0, 0, 0, 0)";
+        document.getElementById("cont1").style.animation = "fadeout .5s forwards";
+        document.getElementById("ask1").style.animation = "fadeout .5s forwards";
+        setTimeout(function() {
+            document.getElementById("circ2").style.border = '4px solid var(--main-solid)';
+            document.getElementById("compoter").style.color = 'var(--main-solid)';
+        }, 500);
+        setTimeout(function() {
+            document.getElementById("1form").style.display = "none";
+        }, 500)
+        timesthru = 1;
+        if (up = 1) {
+            document.getElementById("error1").style.animation = "fadeout .5s forwards";
+            var up = 2;
+            fadein2();
+        } else {
+            return false;
+        }
+        return true;
+    } else {
+        document.getElementById("error1").style.display = 'Block';
+        document.getElementById("pricerange").style.animation = "error 1.5s";
+        document.getElementById("error1").style.animation = "error2 .5s";
+        var up = 1;
+    }
+    
+   } else {
+    if(timesthru === 1) {
+        let Coolingp = 7.5;
+        let CPUp = 24.25;
+        let GPUp = 19.25;
+        let RAMp = 10;
+        let Motherboardp = 16;
+        let psuP = 7;
+        let Storagep = 10;
+        let casep = 6;
+        let rem = 0;
+        let gamer = 'n';
+        let youtubestreamer = 'n';
+        let dataStorage = 'n';
+        let Modeler3dvideoeditor = 'n';
+        let engineer = 'n';
+        let programmer = 'n';
+    if (document.getElementById('GamerCheck').checked) {
+        gamer = 'y';
+    } else {
+        gamer = 'n';
+    }
+    if (document.getElementById('YtCheck').checked) {
+        youtubestreamer = 'y';
+    } else {
+        youtubestreamer = 'n';
+    }
+    if (document.getElementById('DataCheck').checked) {
+        dataStorage = 'y';
+    } else {
+        dataStorage = 'n';
+    }
+    if (document.getElementById('Check3D').checked) {
+        Modeler3dvideoeditor = 'y';
+    } else {
+        Modeler3dvideoeditor = 'n';
+    }
+    if (document.getElementById('EngineerCheck').checked) {
+        engineer = 'y';
+    } else {
+        engineer = 'n';
+    }
+    if (document.getElementById('ProgrammerCheck').checked) {
+        programmer = 'y';
+    } else {
+        programmer = 'n';
+    }
+        if (engineer === 'y') {
+            GPUp +=15;
+            Motherboardp -=5;
+            CPUp -=5;
+            RAMp -=5;
+        }
+        if (dataStorage === 'y') {
+            CPUp -=12.5;
+            GPUp -=12.5;
+            Motherboardp +=10;
+            psuP += 5;
+            casep +=10;
+        }
+        if (Modeler3dvideoeditor === 'y') {
+            if (CPUp < 20) {
+                CPUp +=15;
+                GPUp -=5;
+                RAMp -=5
+                Motherboardp -=5;
+            }
+            if (GPUp < 15) {
+                GPUp +=5;
+                CPUp -=5;
+                RAMp -=2.5;
+                Motherboardp -=2.5;
+            }
+            if (RAMp < 10) {
+                RAMp +=5;
+                CPUp -=2.5;
+                GPUp -=2.5;
+            }
+            if (Storagep < 5) {
+                Storagep +=5;
+                GPUp -=2.5;
+                CPUp -=2.5;
+            }
+        }
+        if (programmer === 'y') {
+            CPUp +=5;
+            Motherboardp -=5;
+        }
+        if (youtubestreamer === 'y') {
+            RAMp +=1;
+            Storagep +=2.5;
+            Motherboardp -=3.5;
+    
+        }
+        if (gamer === 'y') {
+            CPUp -=10;
+            GPUp +=5;
+            RAMp +=5;
+        }
+        let t = 0;
+        let u = 0
+        if (gamer === 'n' && youtubestreamer === 'n' && programmer === 'n' && Modeler3dvideoeditor === 'n' && dataStorage === 'n' && engineer === 'n') {
+        document.getElementById("error2").style.display = 'Block';
+        document.getElementById("error2").style.animation = "error2 .5s";
+        t = 1;
+        u = 1;
+        } else {
+            t = 0;
+        }
+
+const CPUp2 = (parseInt(document.getElementById("pricerange").value) * CPUp) / 100;  
+const GPUp2 = (parseInt(document.getElementById("pricerange").value) * GPUp) / 100;  
+const Motherboardp2 = (parseInt(document.getElementById("pricerange").value) * Motherboardp) / 100;  
+const RAMp2 = (parseInt(document.getElementById("pricerange").value) * RAMp) / 100;  
+const psuP2 = (parseInt(document.getElementById("pricerange").value) * psuP) / 100;  
+const Storagep2 = (parseInt(document.getElementById("pricerange").value) * Storagep) / 100;
+const Coolingp2 = (parseInt(document.getElementById("pricerange").value) * Coolingp) / 100;    
+const casep2 = (parseInt(document.getElementById("pricerange").value) * casep) / 100;  
+console.log(CPUp);
+console.log(GPUp);
+console.log(Motherboardp2);
+console.log(RAMp2);
+console.log(psuP2);
+console.log(Storagep);
+console.log(Coolingp2);
+console.log(casep2);
+const pcnums= [CPUp2, GPUp2, Motherboardp2, RAMp2, psuP2, Storagep2, casep2, val, Coolingp2];
+const pcnums2 = [CPUp, GPUp, Motherboardp, RAMp, psuP, Storagep, casep, Coolingp];
+        fadeout2(pcnums2 , t, u);
+    }
+   } 
+
+   function fadein3(pcnums2) {
+    setTimeout(function () {
+        sofar(pcnums2);
+    }, 500);
+
+    function sofar(pcnums2) {
+        document.getElementById("form3").style.display = 'flex';
+        document.getElementById("form3").style.animation = "error2 .5s forwards";
+    }
+}
+
+function fadeout2(pcnums2, t, u) {
+   if (t === 0) {
+    document.getElementById("line").style.animation = "loading2 .5s  forwards cubic-bezier(0, 0, 0, 0)";
+    document.getElementById("form2").style.animation = "fadeout .5s forwards";
+    if (u === 1) {
+        document.getElementById("error2").style.animation = "fadeout .5s forwards";
+        setTimeout(function() {
+            document.getElementById("error2").style.display = "none";
+        }, 500);
+    }
+    setTimeout(function() {
+        document.getElementById("form2").style.display = 'none';
+        document.getElementById("circ3").style.border = '4px solid var(--main-solid)';
+        document.getElementById("CPUmark").style.color = 'var(--main-solid)';
+    }, 500);
+    fadein3(pcnums2);
+   }
+}
+
+}
+
+function fadein2() {
+    setTimeout(function () {
+        document.getElementById("form2").style.display = 'flex';
+        document.getElementById("form2").style.animation = "error2 .5s forwards";
+    }, 500);
+}
