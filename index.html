@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Idea</title>
+	<title>PC Helper</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://kit.fontawesome.com/80c5496e3a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </head>
 <body>
+    <a class="help">Help</a>
     <nav class="navbar">
         <div id="circ1" class="circle"><i id="$" class="fa-solid fa-dollar-sign"></i></div>
         <div id="circ2" class="circle"><i id="compoter" class="fa-solid fa-desktop"></i></div>
@@ -54,42 +55,54 @@
            </div>
     </div>
     <div id="form3">
-        <div class="Ask" id="ask2">Which CPU Company Do You Prefer?</div>
-        <div class="form-box" id="process1">
-            <div class="button-box" id="process2">
-                <div id="btn"></div>
-            <button class="toggle-btn" onclick="leftClick()" id="process3">AMD</button>
-            <button class="toggle-btn" onclick="rightClick()" id="process4">Intel</button>
-        </div>
-        </div>
+        <div class="Ask" id="ask2">Now Pick A CPU</div>
+        <h2 id="spendtext"></h2>
         <div class="productContainer" id="process5">
             <div class="topinner">
-                <div class="picktext"><h1 class="picktext">Now Pick A CPU</h1></div>
+                <div class="form-box" id="process1">
+                    <div class="button-box" id="process2">
+                        <div id="btn"></div>
+                    <button class="toggle-btn" onclick="leftClick()" id="process3">AMD</button>
+                    <button class="toggle-btn" onclick="rightClick()" id="process4">Intel</button>
+                </div>
+                </div>
                 <div class="Processtext" id="AMD">AMD</div>
-            <div class="Processtext" id="Intel">Intel</div>
+                <div class="Processtext" id="Intel">Intel</div>
+                <div class="innerline"></div>
             </div>
-            <div class="lineinner"></div>
             <div class="bottominner intelbottom" id="intelbottom">
                 <ul class="intellistul">
-                    <li class="intellist"><div class="inteltext"><p>i5 9600k</p><p class="price">$244.77</p></div><button class="selectbutton">Select</button></li>
-                    <li class="intellist"><div class="inteltext"><p>i7 9700k</p><p class="price">$435.00</p></div><button class="selectbutton">Select</button></li>
-                    <li class="intellist"><div class="inteltext"><p>i3 12100</p><p class="price">$129.98</p></div><button class="selectbutton">Select</button></li>
-                    <li class="intellist"><div class="inteltext"><p>i5 12600k</p><p class="price">$277.99</p></div><button class="selectbutton">Select</button></li>
-                    <li class="intellist"><div class="inteltext"><p>i7 12700k</p><p class="price">$399.99</p></div><button class="selectbutton">Select</button></li>
+                      <li class="intellist">  <input type="radio" name="rb-proccessor" id="i5-9600k" value="i5 9600k">
+                        <label for="i5-9600k">i5 9600k <p class="price">$244.77</p> <p class="reccommended">Reccommended</p></label></li>
+                        <li class="intellist">
+                            <input type="radio" name="rb-proccessor" id="i7-9700k" value="i7 9700k">>
+                            <label for="i7-9700k">i7 9700k<p class="price">$435.00</p><p class="reccommended">Reccommended</p></label>
+                        </li>
+            <li class="intellist">
+         <input type="radio" name="rb-proccessor" id="i3-12100" value="i3 12100">>
+             <label for="i3-12100">i3 12100<p class="price">$129.98</p><p class="reccommended">Reccommended</p></label>
+                </li>
+                <li class="intellist"> <input type="radio" name="rb-proccessor" id="i5-12600k" value="i5 12600k"> <label for="i5-12600k">i5 12600k<p class="price">$277.99</p><p class="reccommended">Reccommended</p></label> </li>
+                <li class="intellist"> <input type="radio" name="rb-proccessor" id="i7-12700k" value="i7 12700k"> <label for="i7-12700k">i7 12700k<p class="price">$399.99</p><p class="reccommended">Reccommended</p></label> </li>
                 </ul>
             </div>
             <div class="bottominner amdbottom" id="amdbottom">
                 <ul class="amdlistul">
-                    <li class="amdlist"><div class="amdtext"><p>Ryzen 5 3600</p><p class="price">$147.89</p></div><button class="selectbutton">Select</button></li>
-                    <li class="amdlist"><div class="amdtext"><p>Ryzen 7 3700x</p><p class="price">$265.00</p></div><button class="selectbutton">Select</button></li>
-                    <li class="amdlist"><div class="amdtext"><p>Ryzen 9 3900x</p><p class="price">$360.00</p></div><button class="selectbutton">Select</button></li>
-                    <li class="amdlist"><div class="amdtext"><p>Ryzen 7 5800x</p><p class="price">$257.00</p></div><button class="selectbutton">Select</button></li>
-                    <li class="amdlist"><div class="amdtext"><p>Ryzen 9 5950x</p><p class="price">$546.73</p></div><button class="selectbutton">Select</button></li>
+                    <li class="amdlist"> <input type="radio" name="rb-proccessor" id="Ryzen 5 3600" value="Ryzen 5 3600"> <label for="Ryzen 5 3600">Ryzen 5 3600<p class="price">$147.89</p><p class="reccommended">Reccommended</p></label></li>
+                    <li class="amdlist"> <input type="radio" name="rb-proccessor" id="Ryzen 7 3700x" value="Ryzen 7 3700x"> <label for="Ryzen 7 3700x">Ryzen 7 3700x<p class="price">$265.00</p><p class="reccommended">Reccommended</p></label></li>
+                    <li class="amdlist"> <input type="radio" name="rb-proccessor" id="Ryzen 9 3900x" value="Ryzen 9 3900x"> <label for="Ryzen 9 3900x">Ryzen 9 3900x<p class="price">$360.00</p><p class="reccommended">Reccommended</p></label></li>
+                    <li class="amdlist"> <input type="radio" name="rb-proccessor" id="Ryzen 7 5800x" value="Ryzen 7 5800x"> <label for="Ryzen 7 5800x">Ryzen 7 5800x<p class="price">$257.00</p><p class="reccommended">Reccommended</p></label></li>
+                    <li class="amdlist"> <input type="radio" name="rb-proccessor" id="Ryzen 9 5950x" value="Ryzen 9 5950x"> <label for="Ryzen 9 5950x">Ryzen 9 5950x<p class="price">$546.73</p><p class="reccommended">Reccommended</p></label></li>
                 </ul>
             </div>
     </div>
+    <label for="Tooltips" id = "error3"><i class="fa-solid fa-circle-info"></i>You must select a CPU</label>
 </div>
-    <button id="next" onclick = "someFunction()">Next</button>
+<div class="nextback">
+    <button class="backbtn nxtbckbtn" id="backbtn">Back</button>
+    <div class="vertline" id="vertline"></div>
+    <button class="nextbtn nxtbckbtn" onclick="someFunction()">Next</button>
+</div>
     <script src="app.js"></script>
 </body>
 </html>

@@ -1,10 +1,13 @@
 var up = 2;
 var timesthru = 0;
+let processor = 0;
 
 document.getElementById("AMD").style.display = 'flex';
 document.getElementById("Intel").style.display = 'None';
 document.getElementById('intelbottom').style.display = 'none';
 document.getElementById('amdbottom').style.display = 'flex';
+document.getElementById('vertline').style.display = 'none';
+document.getElementById('backbtn').style.display = 'none';
 
 function leftClick() {
     document.getElementById('btn').style.left = '0';
@@ -15,7 +18,7 @@ function leftClick() {
 }
 
 function rightClick() {
-    document.getElementById('btn').style.left = '120px';
+    document.getElementById('btn').style.left = '92px';
     document.getElementById("Intel").style.display = 'flex';
     document.getElementById("AMD").style.display = 'None';
     document.getElementById('intelbottom').style.display = 'flex';
@@ -25,6 +28,9 @@ function rightClick() {
 function someFunction() {
     let val = parseInt(document.getElementById("pricerange").value);
    if (timesthru === 0) {
+
+    document.getElementById('vertline').style.display = 'none';
+    document.getElementById('backbtn').style.display = 'none';
     if (val > 749 && val < 10001) {
         document.getElementById("line").style.animation = "loading .5s  forwards cubic-bezier(0, 0, 0, 0)";
         document.getElementById("cont1").style.animation = "fadeout .5s forwards";
@@ -54,6 +60,7 @@ function someFunction() {
     
    } else {
     if(timesthru === 1) {
+        timesthru === 2;
         let Coolingp = 7.5;
         let CPUp = 24.25;
         let GPUp = 19.25;
@@ -170,7 +177,8 @@ const psuP2 = (parseInt(document.getElementById("pricerange").value) * psuP) / 1
 const Storagep2 = (parseInt(document.getElementById("pricerange").value) * Storagep) / 100;
 const Coolingp2 = (parseInt(document.getElementById("pricerange").value) * Coolingp) / 100;    
 const casep2 = (parseInt(document.getElementById("pricerange").value) * casep) / 100;  
-console.log(CPUp);
+const cpuprice = 'Reccommended Amount: $' + CPUp2;
+console.log(CPUp2);
 console.log(GPUp);
 console.log(Motherboardp2);
 console.log(RAMp2);
@@ -180,22 +188,35 @@ console.log(Coolingp2);
 console.log(casep2);
 const pcnums= [CPUp2, GPUp2, Motherboardp2, RAMp2, psuP2, Storagep2, casep2, val, Coolingp2];
 const pcnums2 = [CPUp, GPUp, Motherboardp, RAMp, psuP, Storagep, casep, Coolingp];
-        fadeout2(pcnums2 , t, u);
-    }
+        fadeout2(pcnums2 , t, u, cpuprice);
+    } else {
+        if(timesthru === 2) {
+            //page 3 check 
+            if (processor === 0) {
+                document.getElementById("error3").style.display = 'Block';
+                document.getElementById("error3").style.animation = "error2 .5s";
+            } else {
+                //do fadeout
+            }
    } 
-
-   function fadein3(pcnums2) {
-    setTimeout(function () {
-        sofar(pcnums2);
-    }, 500);
-
-    function sofar(pcnums2) {
-        document.getElementById("form3").style.display = 'flex';
-        document.getElementById("form3").style.animation = "error2 .5s forwards";
     }
 }
 
-function fadeout2(pcnums2, t, u) {
+
+   function fadein3(pcnums2, cpuprice) {
+    setTimeout(function () {
+        sofar(pcnums2, cpuprice);
+    }, 500);
+
+    function sofar(pcnums2, cpuprice) {
+        document.getElementById("form3").style.display = 'flex';
+        document.getElementById("form3").style.animation = "error2 .5s forwards";
+        console.log(cpuprice);
+        document.getElementById('spendtext').innerHTML = cpuprice;
+    }
+}
+
+function fadeout2(pcnums2, t, u, cpuprice) {
    if (t === 0) {
     document.getElementById("line").style.animation = "loading2 .5s  forwards cubic-bezier(0, 0, 0, 0)";
     document.getElementById("form2").style.animation = "fadeout .5s forwards";
@@ -210,7 +231,7 @@ function fadeout2(pcnums2, t, u) {
         document.getElementById("circ3").style.border = '4px solid var(--main-solid)';
         document.getElementById("CPUmark").style.color = 'var(--main-solid)';
     }, 500);
-    fadein3(pcnums2);
+    fadein3(pcnums2, cpuprice);
    }
 }
 
@@ -220,5 +241,20 @@ function fadein2() {
     setTimeout(function () {
         document.getElementById("form2").style.display = 'flex';
         document.getElementById("form2").style.animation = "error2 .5s forwards";
+        document.getElementById('vertline').style.display = 'block';
+        document.getElementById('backbtn').style.display = 'block';
     }, 500);
 }
+
+window.addEventListener('change', event => {
+    if (event.target.matches('.intellist input')) {
+        let checkedRb = document.querySelector('.intellist input:checked');
+        processor = checkedRb.value;
+        console.log(processor);
+    }
+    if (event.target.matches('.amdlist input')) {
+        checkedRb = document.querySelector('.amdlist input:checked');
+        processor = checkedRb.value;
+        console.log(processor);
+    }
+})
