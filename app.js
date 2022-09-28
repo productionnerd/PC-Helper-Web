@@ -1,6 +1,30 @@
 var up = 2;
 var timesthru = 0;
 let processor = 0;
+let Coolingp = 7.5;
+let CPUp = 24.25;
+let GPUp = 19.25;
+let RAMp = 10;
+let Motherboardp = 16;
+let psuP = 7;
+let Storagep = 10;
+let casep = 6;
+let rem = 0;
+let gamer = 'n';
+let youtubestreamer = 'n';
+let dataStorage = 'n';
+let Modeler3dvideoeditor = 'n';
+let engineer = 'n';
+let programmer = 'n';
+let CPUp2 = 0;
+let GPUp2 = 0;
+let Motherboardp2 = 0;
+let RAMp2 = 0;
+let psuP2 = 0;
+let Storagep2 = 0;
+let Coolingp2 = 0;
+let casep2 = 0;
+let cpuprice = 0;
 
 document.getElementById("AMD").style.display = 'flex';
 document.getElementById("Intel").style.display = 'None';
@@ -61,21 +85,7 @@ function someFunction() {
    } else {
     if(timesthru === 1) {
         timesthru === 2;
-        let Coolingp = 7.5;
-        let CPUp = 24.25;
-        let GPUp = 19.25;
-        let RAMp = 10;
-        let Motherboardp = 16;
-        let psuP = 7;
-        let Storagep = 10;
-        let casep = 6;
-        let rem = 0;
-        let gamer = 'n';
-        let youtubestreamer = 'n';
-        let dataStorage = 'n';
-        let Modeler3dvideoeditor = 'n';
-        let engineer = 'n';
-        let programmer = 'n';
+       
     if (document.getElementById('GamerCheck').checked) {
         gamer = 'y';
     } else {
@@ -178,25 +188,17 @@ const Storagep2 = (parseInt(document.getElementById("pricerange").value) * Stora
 const Coolingp2 = (parseInt(document.getElementById("pricerange").value) * Coolingp) / 100;    
 const casep2 = (parseInt(document.getElementById("pricerange").value) * casep) / 100;  
 const cpuprice = 'Reccommended Amount: $' + CPUp2;
-console.log(CPUp2);
-console.log(GPUp);
-console.log(Motherboardp2);
-console.log(RAMp2);
-console.log(psuP2);
-console.log(Storagep);
-console.log(Coolingp2);
-console.log(casep2);
 const pcnums= [CPUp2, GPUp2, Motherboardp2, RAMp2, psuP2, Storagep2, casep2, val, Coolingp2];
 const pcnums2 = [CPUp, GPUp, Motherboardp, RAMp, psuP, Storagep, casep, Coolingp];
         fadeout2(pcnums2 , t, u, cpuprice);
+        timesthru = 2;
     } else {
         if(timesthru === 2) {
-            //page 3 check 
-            if (processor === 0) {
+            if (processor == 0) {
                 document.getElementById("error3").style.display = 'Block';
                 document.getElementById("error3").style.animation = "error2 .5s";
             } else {
-                //do fadeout
+                document.getElementById("form3").style.animation = "fade .5s";
             }
    } 
     }
@@ -211,7 +213,6 @@ const pcnums2 = [CPUp, GPUp, Motherboardp, RAMp, psuP, Storagep, casep, Coolingp
     function sofar(pcnums2, cpuprice) {
         document.getElementById("form3").style.display = 'flex';
         document.getElementById("form3").style.animation = "error2 .5s forwards";
-        console.log(cpuprice);
         document.getElementById('spendtext').innerHTML = cpuprice;
     }
 }
@@ -250,11 +251,51 @@ window.addEventListener('change', event => {
     if (event.target.matches('.intellist input')) {
         let checkedRb = document.querySelector('.intellist input:checked');
         processor = checkedRb.value;
-        console.log(processor);
     }
     if (event.target.matches('.amdlist input')) {
         checkedRb = document.querySelector('.amdlist input:checked');
         processor = checkedRb.value;
-        console.log(processor);
     }
 })
+
+    // Reference limit for the price:
+    const limit = 300;
+    function markClosest() {
+        let
+            closestAboveEle = null,
+            closestBelowEle = null,
+            closestReccommendedEleAbove = null,
+            closestReccommendedEleBelow = null,
+            closestAbovePrice = 9999,
+            closestBelowPrice = 0;
+        // Loop through all labels:
+        document.querySelectorAll('.processor-list label').forEach((item, idx) => {
+            const
+                // Element containing the price:
+                priceEle = item.querySelector('.price'),
+                price = parseFloat(priceEle.textContent.replace('$', '')),
+                // Element containing the marker "reccommended":
+                reccommendedEle = item.querySelector('.reccommended');
+            // Is the price below the limit?
+            if (price < limit) {
+                // Is the price above the closest price below?
+                if (price > closestBelowPrice) {
+                    // Note elements and price for "below":
+                    closestBelowPrice = price;
+                    closestBelowEle = priceEle;
+                    closestReccommendedEleBelow = reccommendedEle;
+                }
+            } else {
+                if (price < closestAbovePrice) {
+                    closestAbovePrice = price;
+                    closestAboveEle = priceEle;
+                    closestReccommendedEleAbove = reccommendedEle;
+                }
+            }
+            reccommendedEle.classList.remove('visi');
+        });
+        // Add class "visi" for the markers of the closest elements:
+        if (closestReccommendedEleAbove) closestReccommendedEleAbove.classList.add('visi');
+        if (closestReccommendedEleBelow) closestReccommendedEleBelow.classList.add('visi');
+    }
+    markClosest();

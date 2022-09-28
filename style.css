@@ -20,11 +20,13 @@ body {
 }
 
 body {
-	background-image: url('images/Dots\ BG.gif');
+	background-image: url('images/gradient-black-background-with-wavy-lines_23-2149157312.webp');
+	/* background-color: black; */
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	background-size: 100%;
+	overflow: hidden;
 }
 
 .form-box {
@@ -80,15 +82,14 @@ body {
 	top: 13%;
 }
 
-.Ask {
+.Ask { 
 	color: white;
-	background: var(--main-solid);
+	background: var(--bg);
 	padding: 10px 40px;
 	border-radius: 40px;
-	border: white solid 4px;
+	border: var(--main-solid) solid 3px;
 	text-align: center;
-	font-size: 30px;
-	margin-top: 0px;
+	font-size: 25px;
 }
 
 .navbar {
@@ -124,15 +125,14 @@ body {
 }
 
 .container {
-	width: 300px;
-	height: 300px;
+padding: 10px;
 	background-color: var(--bg);
 	justify-content: center;
 	display: flex;
 	align-items: center;
 	border-radius: 50px;
 	outline: 3px solid white;
-	flex-wrap: wrap;
+	flex-direction: row;
 }
 
 .contcont {
@@ -278,11 +278,11 @@ body {
 	text-align: center;
 	color: white;
 	background-color: var(--bg);
-	width: 150px;
-	height: 50px;
 	font-size: 20px;
 	font-weight: bold;
 	font-family: 'Poppins';
+	padding: 10px 5px;
+	width: 40%;
 }
 
 #pricerange::-webkit-outer-spin-button,
@@ -297,8 +297,6 @@ body {
 
 .productContainer {
 	background-color: var(--bg);
-	width: 600px;
-	height: 400px;
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
@@ -545,6 +543,14 @@ margin-right: 5px;
 	display: none;
 }
 
+#error3 {
+	display: none;
+	background-color: red;
+	color: white;
+	padding: 5px 10px;
+	border-radius: 50vw;
+}
+
 .bi {
 	color: white;
 }
@@ -645,7 +651,7 @@ margin-right: 5px;
 
 .nextback {
 	background-color: var(--bg);
-	height: 4vh;
+	height: 4%;
 	border-radius: 50vw;
 	margin-bottom: 20px;
 	display: flex;
@@ -653,6 +659,7 @@ margin-right: 5px;
 	align-items: center;
 	justify-content: space-evenly;
 	transition: .5s ease;
+	overflow: hidden;
 }
 
 .nextback .vertline {
@@ -677,6 +684,7 @@ margin-right: 5px;
 	margin-left: 5px;
 	margin-right: 5px;
 	height: 80%;
+
 }
 
 .nxtbckbtn:hover {
@@ -793,4 +801,8 @@ margin-bottom: 20px;
 	background-color: white;
 	height: 2px;
 	border-radius: 100vw;
+}
+
+.processor-list .reccommended:not(.visi) {
+	display: none;
 }
