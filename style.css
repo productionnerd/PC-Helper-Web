@@ -595,6 +595,7 @@ margin-right: 5px;
 	align-items: flex-start;
 	justify-content: center;
 	width: 100%;
+	margin-bottom: 10px;
 }
 .intellistul {
 	width: 100%;
@@ -618,7 +619,7 @@ margin-right: 5px;
 	align-items: center;
 	justify-content: space-around;
 	width: 100%;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 .amdlistul {
 	width: 100%;
