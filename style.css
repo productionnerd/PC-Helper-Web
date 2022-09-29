@@ -200,6 +200,16 @@ padding: 10px;
 	}
 }
 
+@keyframes loading3 {
+	0% {
+		width: 26.2%;
+	}
+
+	100% {
+		width: 38.3%;
+	}
+}
+
 
 .money {
 	color: white;
@@ -805,4 +815,22 @@ margin-bottom: 20px;
 
 .processor-list .reccommended:not(.visi) {
 	display: none;
+}
+
+@media (max-height: 850px) {
+	.nextback {
+		height: 5%;
+	}
+}
+
+@media (max-height: 650px) {
+	.nextback {
+		height: 6%;
+	}
+}
+
+@media (max-height: 550px) {
+	.nextback {
+		height: 7%;
+	}
 }
