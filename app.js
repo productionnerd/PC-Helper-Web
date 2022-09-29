@@ -229,9 +229,8 @@ const pcnums2 = [CPUp, GPUp, Motherboardp, RAMp, psuP, Storagep, casep, Coolingp
         document.getElementById("form3").style.animation = "error2 .5s forwards";
         document.getElementById('spendtext').innerHTML = cpuprice;
     }
-        // Reference limit for the price:
-        const limit = CPUp2;
-        function markClosest() {
+         // Mark processors, that have the closest price, as recommended:
+        function markClosest(theClass, limit) {
             let
                 closestAboveEle = null,
                 closestBelowEle = null,
@@ -240,7 +239,7 @@ const pcnums2 = [CPUp, GPUp, Motherboardp, RAMp, psuP, Storagep, casep, Coolingp
                 closestAbovePrice = 9999,
                 closestBelowPrice = 0;
             // Loop through all labels:
-            document.querySelectorAll('.processor-list label').forEach((item, idx) => {
+            document.querySelectorAll('.' + theClass + ' label').forEach((item, idx) => {
                 const
                     // Element containing the price:
                     priceEle = item.querySelector('.price'),
@@ -269,7 +268,8 @@ const pcnums2 = [CPUp, GPUp, Motherboardp, RAMp, psuP, Storagep, casep, Coolingp
             if (closestReccommendedEleAbove) closestReccommendedEleAbove.classList.add('visi');
             if (closestReccommendedEleBelow) closestReccommendedEleBelow.classList.add('visi');
         }
-        markClosest();
+        markClosest('intellist', CPUp2);
+        markClosest('amdlist', CPUp2);
 }
 
 function fadeout2(pcnums2, t, u, cpuprice) {
