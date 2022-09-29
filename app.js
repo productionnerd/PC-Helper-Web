@@ -229,47 +229,6 @@ const pcnums2 = [CPUp, GPUp, Motherboardp, RAMp, psuP, Storagep, casep, Coolingp
         document.getElementById("form3").style.animation = "error2 .5s forwards";
         document.getElementById('spendtext').innerHTML = cpuprice;
     }
-         // Mark processors, that have the closest price, as recommended:
-        function markClosest(theClass, limit) {
-            let
-                closestAboveEle = null,
-                closestBelowEle = null,
-                closestReccommendedEleAbove = null,
-                closestReccommendedEleBelow = null,
-                closestAbovePrice = 9999,
-                closestBelowPrice = 0;
-            // Loop through all labels:
-            document.querySelectorAll('.' + theClass + ' label').forEach((item, idx) => {
-                const
-                    // Element containing the price:
-                    priceEle = item.querySelector('.price'),
-                    price = parseFloat(priceEle.textContent.replace('$', '')),
-                    // Element containing the marker "reccommended":
-                    reccommendedEle = item.querySelector('.reccommended');
-                // Is the price below the limit?
-                if (price < limit) {
-                    // Is the price above the closest price below?
-                    if (price > closestBelowPrice) {
-                        // Note elements and price for "below":
-                        closestBelowPrice = price;
-                        closestBelowEle = priceEle;
-                        closestReccommendedEleBelow = reccommendedEle;
-                    }
-                } else {
-                    if (price < closestAbovePrice) {
-                        closestAbovePrice = price;
-                        closestAboveEle = priceEle;
-                        closestReccommendedEleAbove = reccommendedEle;
-                    }
-                }
-                reccommendedEle.classList.remove('visi');
-            });
-            // Add class "visi" for the markers of the closest elements:
-            if (closestReccommendedEleAbove) closestReccommendedEleAbove.classList.add('visi');
-            if (closestReccommendedEleBelow) closestReccommendedEleBelow.classList.add('visi');
-        }
-        markClosest('intellist', CPUp2);
-        markClosest('amdlist', CPUp2);
 }
 
 function fadeout2(pcnums2, t, u, cpuprice) {
@@ -312,3 +271,45 @@ window.addEventListener('change', event => {
         processor = checkedRb.value;
     }
 })
+
+         // Mark processors, that have the closest price, as recommended:
+        function markClosest(theClass, limit) {
+            let
+                closestAboveEle = null,
+                closestBelowEle = null,
+                closestReccommendedEleAbove = null,
+                closestReccommendedEleBelow = null,
+                closestAbovePrice = 9999,
+                closestBelowPrice = 0;
+            // Loop through all labels:
+            document.querySelectorAll('.' + theClass + ' label').forEach((item, idx) => {
+                const
+                    // Element containing the price:
+                    priceEle = item.querySelector('.price'),
+                    price = parseFloat(priceEle.textContent.replace('$', '')),
+                    // Element containing the marker "reccommended":
+                    reccommendedEle = item.querySelector('.reccommended');
+                // Is the price below the limit?
+                if (price < limit) {
+                    // Is the price above the closest price below?
+                    if (price > closestBelowPrice) {
+                        // Note elements and price for "below":
+                        closestBelowPrice = price;
+                        closestBelowEle = priceEle;
+                        closestReccommendedEleBelow = reccommendedEle;
+                    }
+                } else {
+                    if (price < closestAbovePrice) {
+                        closestAbovePrice = price;
+                        closestAboveEle = priceEle;
+                        closestReccommendedEleAbove = reccommendedEle;
+                    }
+                }
+                reccommendedEle.classList.remove('visi');
+            });
+            // Add class "visi" for the markers of the closest elements:
+            if (closestReccommendedEleAbove) closestReccommendedEleAbove.classList.add('visi');
+            if (closestReccommendedEleBelow) closestReccommendedEleBelow.classList.add('visi');
+        }
+        markClosest('intellist', CPUp2);
+        markClosest('amdlist', CPUp2);
