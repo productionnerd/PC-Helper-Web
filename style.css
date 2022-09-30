@@ -34,12 +34,12 @@ body {
 }
 
 .button-box {
-	width: 195px;
+	width: 196px;
 	height: 45px;
 	margin: 10px auto;
 	border-radius: 30px;
 	background: var(--bg);
-	border: 3px white solid;
+	border: 2.5px white solid;
 	opacity: 100%;
 	position: relative;
 	flex-direction: row;
@@ -47,10 +47,6 @@ body {
 	justify-content: center;
 	align-items: center;
 	transition: 0.8s ease;
-}
-
-.button-box:hover {
-	background-color: #272727;
 }
 
 .toggle-btn {
@@ -73,7 +69,7 @@ body {
 	height: 72.7272727%;
 	background: var(--main-solid);
 	border-radius: 30px;
-	transition: .5s;
+	transition: .5s ease;
 	top: 12.5%;
 	margin-left: 7.5px;
 	opacity: 100%;
@@ -572,8 +568,8 @@ margin-right: 5px;
 	justify-content: center;
 	align-items: center;
 	height: 108px;
-	margin-top: -10px;
-	margin-bottom: 10px;
+	margin-top: -20px;
+	margin-bottom: 15px;
 	align-self: flex-start;
 }
 .bottominner {
@@ -595,7 +591,6 @@ margin-right: 5px;
 	align-items: flex-start;
 	justify-content: center;
 	width: 100%;
-	margin-bottom: 10px;
 }
 .intellistul {
 	width: 100%;
@@ -619,7 +614,7 @@ margin-right: 5px;
 	align-items: center;
 	justify-content: space-around;
 	width: 100%;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 }
 .amdlistul {
 	width: 100%;
@@ -720,7 +715,7 @@ margin-right: 5px;
 	font-family: 'poppins';
 	outline: 2px solid white;
     transition: 0.5s ease;
-	margin-left: 100px;
+	margin-left: 200px;
 }
 
 .intellist input:checked~label::after {
@@ -742,7 +737,7 @@ column-gap: 80px;
 }
 
 .intellist {
-margin-bottom: 20px;
+margin-bottom: 10px;
 
 }
 
@@ -764,7 +759,7 @@ margin-bottom: 20px;
 	font-family: 'poppins';
 	outline: 2px solid white;
     transition: 0.5s ease;
-	margin-left: 100px;
+	margin-left: 200px;
 }
 
 
@@ -787,7 +782,7 @@ column-gap: 80px;
 }
 
 .amdlist {
-margin-bottom: 20px;
+margin-bottom: 10px;
 
 }
 
@@ -805,6 +800,8 @@ margin-bottom: 20px;
 	padding: 5px 10px;
 	margin-left: 20px;
 	border-radius: 50vw;
+	position: absolute;
+	left: 48%;
 }
 
 .innerline {

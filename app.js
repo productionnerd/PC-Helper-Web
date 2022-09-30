@@ -84,7 +84,6 @@ function someFunction() {
     
    } else {
     if(timesthru === 1) {
-        timesthru === 2;
        
     if (document.getElementById('GamerCheck').checked) {
         gamer = 'y';
@@ -168,30 +167,26 @@ function someFunction() {
             GPUp +=5;
             RAMp +=5;
         }
-        let t = 0;
-        let u = 0
+        const CPUp2 = (parseInt(document.getElementById("pricerange").value) * CPUp) / 100;  
+        const GPUp2 = (parseInt(document.getElementById("pricerange").value) * GPUp) / 100;  
+        const Motherboardp2 = (parseInt(document.getElementById("pricerange").value) * Motherboardp) / 100;  
+        const RAMp2 = (parseInt(document.getElementById("pricerange").value) * RAMp) / 100;  
+        const psuP2 = (parseInt(document.getElementById("pricerange").value) * psuP) / 100;  
+        const Storagep2 = (parseInt(document.getElementById("pricerange").value) * Storagep) / 100;
+        const Coolingp2 = (parseInt(document.getElementById("pricerange").value) * Coolingp) / 100;    
+        const casep2 = (parseInt(document.getElementById("pricerange").value) * casep) / 100;  
+        const cpuprice = 'Reccommended Amount: $' + CPUp2;
+        const pcnums= [CPUp2, GPUp2, Motherboardp2, RAMp2, psuP2, Storagep2, casep2, val, Coolingp2];
+        const pcnums2 = [CPUp, GPUp, Motherboardp, RAMp, psuP, Storagep, casep, Coolingp];
+        
         if (gamer === 'n' && youtubestreamer === 'n' && programmer === 'n' && Modeler3dvideoeditor === 'n' && dataStorage === 'n' && engineer === 'n') {
         document.getElementById("error2").style.display = 'Block';
         document.getElementById("error2").style.animation = "error2 .5s";
-        t = 1;
-        u = 1;
+        console.log(timesthru);
         } else {
-            t = 0;
+            fadeout2(cpuprice, CPUp2);
+            timesthru = 2;
         }
-
-const CPUp2 = (parseInt(document.getElementById("pricerange").value) * CPUp) / 100;  
-const GPUp2 = (parseInt(document.getElementById("pricerange").value) * GPUp) / 100;  
-const Motherboardp2 = (parseInt(document.getElementById("pricerange").value) * Motherboardp) / 100;  
-const RAMp2 = (parseInt(document.getElementById("pricerange").value) * RAMp) / 100;  
-const psuP2 = (parseInt(document.getElementById("pricerange").value) * psuP) / 100;  
-const Storagep2 = (parseInt(document.getElementById("pricerange").value) * Storagep) / 100;
-const Coolingp2 = (parseInt(document.getElementById("pricerange").value) * Coolingp) / 100;    
-const casep2 = (parseInt(document.getElementById("pricerange").value) * casep) / 100;  
-const cpuprice = 'Reccommended Amount: $' + CPUp2;
-const pcnums= [CPUp2, GPUp2, Motherboardp2, RAMp2, psuP2, Storagep2, casep2, val, Coolingp2];
-const pcnums2 = [CPUp, GPUp, Motherboardp, RAMp, psuP, Storagep, casep, Coolingp];
-        fadeout2(pcnums2 , t, u, cpuprice);
-        timesthru = 2;
     } else {
         if(timesthru === 2) {
             let l = 0;
@@ -199,6 +194,7 @@ const pcnums2 = [CPUp, GPUp, Motherboardp, RAMp, psuP, Storagep, casep, Coolingp
                 document.getElementById("error3").style.display = 'Block';
                 document.getElementById("error3").style.animation = "error2 .5s";
                 l = 1;
+                return;
             } else {
                 if (l == 0) {
                     document.getElementById("line").style.animation = "loading3 .5s  forwards cubic-bezier(0, 0, 0, 0)";
@@ -219,61 +215,18 @@ const pcnums2 = [CPUp, GPUp, Motherboardp, RAMp, psuP, Storagep, casep, Coolingp
 }
 
 
-   function fadein3(pcnums2, cpuprice) {
+   function fadein3(cpuprice, CPUp2) {
     setTimeout(function () {
-        sofar(pcnums2, cpuprice);
+        fade32(cpuprice, CPUp2);
     }, 500);
 
-    function sofar(pcnums2, cpuprice) {
+    function fade32(cpuprice, CPUp2) {
         document.getElementById("form3").style.display = 'flex';
         document.getElementById("form3").style.animation = "error2 .5s forwards";
         document.getElementById('spendtext').innerHTML = cpuprice;
-    }
-}
-
-function fadeout2(pcnums2, t, u, cpuprice) {
-   if (t === 0) {
-    document.getElementById("line").style.animation = "loading2 .5s  forwards cubic-bezier(0, 0, 0, 0)";
-    document.getElementById("form2").style.animation = "fadeout .5s forwards";
-    if (u === 1) {
-        document.getElementById("error2").style.animation = "fadeout .5s forwards";
-        setTimeout(function() {
-            document.getElementById("error2").style.display = "none";
-        }, 500);
-    }
-    setTimeout(function() {
-        document.getElementById("form2").style.display = 'none';
-        document.getElementById("circ3").style.border = '4px solid var(--main-solid)';
-        document.getElementById("CPUmark").style.color = 'var(--main-solid)';
-    }, 500);
-    fadein3(pcnums2, cpuprice);
-   }
-}
-
-}
-
-function fadein2() {
-    setTimeout(function () {
-        document.getElementById("form2").style.display = 'flex';
-        document.getElementById("form2").style.animation = "error2 .5s forwards";
-        document.getElementById('vertline').style.display = 'block';
-        document.getElementById('backbtn').style.display = 'block';
-    }, 500);
-}
-
-window.addEventListener('change', event => {
-    if (event.target.matches('.intellist input')) {
-        let checkedRb = document.querySelector('.intellist input:checked');
-        processor = checkedRb.value;
-    }
-    if (event.target.matches('.amdlist input')) {
-        checkedRb = document.querySelector('.amdlist input:checked');
-        processor = checkedRb.value;
-    }
-})
-
+        console.log(CPUp2);
          // Mark processors, that have the closest price, as recommended:
-        function markClosest(theClass, limit) {
+         function markClosest(theClass, limit) {
             let
                 closestAboveEle = null,
                 closestBelowEle = null,
@@ -313,3 +266,42 @@ window.addEventListener('change', event => {
         }
         markClosest('intellist', CPUp2);
         markClosest('amdlist', CPUp2);
+    }
+      
+}
+
+function fadeout2(cpuprice, CPUp2) {
+
+    document.getElementById("line").style.animation = "loading2 .5s  forwards cubic-bezier(0, 0, 0, 0)";
+    document.getElementById("form2").style.animation = "fadeout .5s forwards";
+    setTimeout(function() {
+        document.getElementById("form2").style.display = 'none';
+        document.getElementById("circ3").style.border = '4px solid var(--main-solid)';
+        document.getElementById("CPUmark").style.color = 'var(--main-solid)';
+    }, 500);
+    fadein3(cpuprice, CPUp2);
+   
+}
+
+}
+
+function fadein2() {
+    setTimeout(function () {
+        document.getElementById("form2").style.display = 'flex';
+        document.getElementById("form2").style.animation = "error2 .5s forwards";
+        document.getElementById('vertline').style.display = 'block';
+        document.getElementById('backbtn').style.display = 'block';
+    }, 500);
+}
+
+window.addEventListener('change', event => {
+    if (event.target.matches('.intellist input')) {
+        let checkedRb = document.querySelector('.intellist input:checked');
+        processor = checkedRb.value;
+    }
+    if (event.target.matches('.amdlist input')) {
+        checkedRb = document.querySelector('.amdlist input:checked');
+        processor = checkedRb.value;
+    }
+})
+
