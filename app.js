@@ -225,47 +225,55 @@ function someFunction() {
         document.getElementById("form3").style.animation = "error2 .5s forwards";
         document.getElementById('spendtext').innerHTML = cpuprice;
         console.log(CPUp2);
-         // Mark processors, that have the closest price, as recommended:
-         function markClosest(theClass, limit) {
+    // Mark processors, that have the closest price, as recommended:
+        function markClosest(
+            theClass, // The class of the ul element
+            limit // The limit for the price
+        ) {
             let
                 closestAboveEle = null,
                 closestBelowEle = null,
-                closestReccommendedEleAbove = null,
-                closestReccommendedEleBelow = null,
                 closestAbovePrice = 9999,
                 closestBelowPrice = 0;
-            // Loop through all labels:
-            document.querySelectorAll('.' + theClass + ' label').forEach((item, idx) => {
+            // Loop through all li elements:
+            document.querySelectorAll('.' + theClass + ' li').forEach((currentLi, idx) => {
                 const
                     // Element containing the price:
-                    priceEle = item.querySelector('.price'),
+                    priceEle = currentLi.querySelector('.price'),
                     price = parseFloat(priceEle.textContent.replace('$', '')),
-                    // Element containing the marker "reccommended":
-                    reccommendedEle = item.querySelector('.reccommended');
+                    reccommendedEle = currentLi.querySelector('.reccommended');
                 // Is the price below the limit?
                 if (price < limit) {
                     // Is the price above the closest price below?
                     if (price > closestBelowPrice) {
                         // Note elements and price for "below":
                         closestBelowPrice = price;
-                        closestBelowEle = priceEle;
-                        closestReccommendedEleBelow = reccommendedEle;
+                        closestBelowEle = currentLi;
                     }
                 } else {
                     if (price < closestAbovePrice) {
                         closestAbovePrice = price;
-                        closestAboveEle = priceEle;
-                        closestReccommendedEleAbove = reccommendedEle;
+                        closestAboveEle = currentLi;
                     }
                 }
                 reccommendedEle.classList.remove('visi');
             });
-            // Add class "visi" for the markers of the closest elements:
-            if (closestReccommendedEleAbove) closestReccommendedEleAbove.classList.add('visi');
-            if (closestReccommendedEleBelow) closestReccommendedEleBelow.classList.add('visi');
+            // Add class "visi" for the markers of the closest elements
+            // and move these elements to the top of the list:
+            const parentUl = document.querySelector('.' + theClass).closest('ul');
+            if (closestAboveEle) {
+                const closestReccommendedEleAbove = closestAboveEle.querySelector('.reccommended');
+                closestReccommendedEleAbove.classList.add('visi');
+                parentUl.insertAdjacentElement('afterbegin', closestAboveEle);
+            }
+            if (closestBelowEle) {
+                const closestReccommendedEleBelow = closestBelowEle.querySelector('.reccommended');
+                closestReccommendedEleBelow.classList.add('visi');
+                parentUl.insertAdjacentElement('afterbegin', closestBelowEle);
+            }
         }
-        markClosest('intellist', CPUp2);
-        markClosest('amdlist', CPUp2);
+        markClosest('intellistul', CPUp2);
+        markClosest('amdlistul', CPUp2);
     }
       
 }
