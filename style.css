@@ -314,7 +314,7 @@ padding: 10px;
 	overflow-y: scroll;
 	overflow-x: hidden;
 	flex-direction: column;
-	max-height: 300px;
+	max-height: 200px;
 }
 
 .Processtext {
