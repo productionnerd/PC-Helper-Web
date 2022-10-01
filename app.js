@@ -178,6 +178,7 @@ function someFunction() {
         const casep2 = (parseInt(document.getElementById("pricerange").value) * casep) / 100;  
         const cpuprice = 'Reccommended Amount: $' + CPUp2; 
         motherboadrprice = 'Reccommended Amount: $' + Motherboardp2; 
+        console.log(motherboadrprice);
         if (gamer === 'n' && youtubestreamer === 'n' && programmer === 'n' && Modeler3dvideoeditor === 'n' && dataStorage === 'n' && engineer === 'n') {
         document.getElementById("error2").style.display = 'Block';
         document.getElementById("error2").style.animation = "error2 .5s";
