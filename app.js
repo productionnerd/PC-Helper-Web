@@ -23,6 +23,7 @@ let RAMp2 = 0;
 let psuP2 = 0;
 let Storagep2 = 0;
 let Coolingp2 = 0;
+let motherboadrprice = 0;
 let casep2 = 0;
 let cpuprice = 0;
 
@@ -175,20 +176,16 @@ function someFunction() {
         const Storagep2 = (parseInt(document.getElementById("pricerange").value) * Storagep) / 100;
         const Coolingp2 = (parseInt(document.getElementById("pricerange").value) * Coolingp) / 100;    
         const casep2 = (parseInt(document.getElementById("pricerange").value) * casep) / 100;  
-        const cpuprice = 'Reccommended Amount: $' + CPUp2;
-        const pcnums= [CPUp2, GPUp2, Motherboardp2, RAMp2, psuP2, Storagep2, casep2, val, Coolingp2];
-        const pcnums2 = [CPUp, GPUp, Motherboardp, RAMp, psuP, Storagep, casep, Coolingp];
-        
+        const cpuprice = 'Reccommended Amount: $' + CPUp2; 
+        motherboadrprice = 'Reccommended Amount: $' + Motherboardp2; 
         if (gamer === 'n' && youtubestreamer === 'n' && programmer === 'n' && Modeler3dvideoeditor === 'n' && dataStorage === 'n' && engineer === 'n') {
         document.getElementById("error2").style.display = 'Block';
         document.getElementById("error2").style.animation = "error2 .5s";
-        console.log(timesthru);
         } else {
-            fadeout2(cpuprice, CPUp2);
+            fadeout2(cpuprice, CPUp2, Motherboardp2);
             timesthru = 2;
         }
-    } else {
-        if(timesthru === 2) {
+    } else if(timesthru === 2) {
             let l = 0;
             if (processor == 0) {
                 document.getElementById("error3").style.display = 'Block';
@@ -209,76 +206,31 @@ function someFunction() {
                 document.getElementById("form3").style.display = 'none';
                 document.getElementById("circ4").style.border = '4px solid var(--main-solid)';
                 document.getElementById("MotherboardMark").style.color = 'var(--main-solid)';
+                document.getElementById("form4").style.display = 'flex';
+                document.getElementById("form4").style.animation = "error2 .5s forwards";
+                document.getElementById('spendtext2').innerHTML = motherboadrprice;
             }, 500);
    } 
-    }
+    
 }
 
 
    function fadein3(cpuprice, CPUp2) {
     setTimeout(function () {
-        fade32(cpuprice, CPUp2);
+        fade32(cpuprice, CPUp2);  
     }, 500);
 
     function fade32(cpuprice, CPUp2) {
         document.getElementById("form3").style.display = 'flex';
         document.getElementById("form3").style.animation = "error2 .5s forwards";
         document.getElementById('spendtext').innerHTML = cpuprice;
-        console.log(CPUp2);
-    // Mark processors, that have the closest price, as recommended:
-        function markClosest(
-            theClass, // The class of the ul element
-            limit // The limit for the price
-        ) {
-            let
-                closestAboveEle = null,
-                closestBelowEle = null,
-                closestAbovePrice = 9999,
-                closestBelowPrice = 0;
-            // Loop through all li elements:
-            document.querySelectorAll('.' + theClass + ' li').forEach((currentLi, idx) => {
-                const
-                    // Element containing the price:
-                    priceEle = currentLi.querySelector('.price'),
-                    price = parseFloat(priceEle.textContent.replace('$', '')),
-                    reccommendedEle = currentLi.querySelector('.reccommended');
-                // Is the price below the limit?
-                if (price < limit) {
-                    // Is the price above the closest price below?
-                    if (price > closestBelowPrice) {
-                        // Note elements and price for "below":
-                        closestBelowPrice = price;
-                        closestBelowEle = currentLi;
-                    }
-                } else {
-                    if (price < closestAbovePrice) {
-                        closestAbovePrice = price;
-                        closestAboveEle = currentLi;
-                    }
-                }
-                reccommendedEle.classList.remove('visi');
-            });
-            // Add class "visi" for the markers of the closest elements
-            // and move these elements to the top of the list:
-            const parentUl = document.querySelector('.' + theClass).closest('ul');
-            if (closestAboveEle) {
-                const closestReccommendedEleAbove = closestAboveEle.querySelector('.reccommended');
-                closestReccommendedEleAbove.classList.add('visi');
-                parentUl.insertAdjacentElement('afterbegin', closestAboveEle);
-            }
-            if (closestBelowEle) {
-                const closestReccommendedEleBelow = closestBelowEle.querySelector('.reccommended');
-                closestReccommendedEleBelow.classList.add('visi');
-                parentUl.insertAdjacentElement('afterbegin', closestBelowEle);
-            }
-        }
         markClosest('intellistul', CPUp2);
         markClosest('amdlistul', CPUp2);
     }
       
 }
 
-function fadeout2(cpuprice, CPUp2) {
+function fadeout2(cpuprice, CPUp2, Motherboardp2) {
 
     document.getElementById("line").style.animation = "loading2 .5s  forwards cubic-bezier(0, 0, 0, 0)";
     document.getElementById("form2").style.animation = "fadeout .5s forwards";
@@ -287,7 +239,7 @@ function fadeout2(cpuprice, CPUp2) {
         document.getElementById("circ3").style.border = '4px solid var(--main-solid)';
         document.getElementById("CPUmark").style.color = 'var(--main-solid)';
     }, 500);
-    fadein3(cpuprice, CPUp2);
+    fadein3(cpuprice, CPUp2, Motherboardp2);
    
 }
 
@@ -313,3 +265,50 @@ window.addEventListener('change', event => {
     }
 })
 
+ // Mark processors, that have the closest price, as recommended:
+ function markClosest(
+    theClass, // The class of the ul element
+    limit // The limit for the price
+) {
+    let
+        closestAboveEle = null,
+        closestBelowEle = null,
+        closestAbovePrice = 9999,
+        closestBelowPrice = 0;
+    // Loop through all li elements:
+    document.querySelectorAll('.' + theClass + ' li').forEach((currentLi, idx) => {
+        const
+            // Element containing the price:
+            priceEle = currentLi.querySelector('.price'),
+            price = parseFloat(priceEle.textContent.replace('$', '')),
+            reccommendedEle = currentLi.querySelector('.reccommended');
+        // Is the price below the limit?
+        if (price < limit) {
+            // Is the price above the closest price below?
+            if (price > closestBelowPrice) {
+                // Note elements and price for "below":
+                closestBelowPrice = price;
+                closestBelowEle = currentLi;
+            }
+        } else {
+            if (price < closestAbovePrice) {
+                closestAbovePrice = price;
+                closestAboveEle = currentLi;
+            }
+        }
+        reccommendedEle.classList.remove('visi');
+    });
+    // Add class "visi" for the markers of the closest elements
+    // and move these elements to the top of the list:
+    const parentUl = document.querySelector('.' + theClass).closest('ul');
+    if (closestAboveEle) {
+        const closestReccommendedEleAbove = closestAboveEle.querySelector('.reccommended');
+        closestReccommendedEleAbove.classList.add('visi');
+        parentUl.insertAdjacentElement('afterbegin', closestAboveEle);
+    }
+    if (closestBelowEle) {
+        const closestReccommendedEleBelow = closestBelowEle.querySelector('.reccommended');
+        closestReccommendedEleBelow.classList.add('visi');
+        parentUl.insertAdjacentElement('afterbegin', closestBelowEle);
+    }
+}
