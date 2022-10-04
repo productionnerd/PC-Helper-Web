@@ -254,7 +254,7 @@ function fadein2() {
         document.getElementById('backbtn').style.display = 'block';
     }, 500);
 }
-
+let mother = 0;
 window.addEventListener('change', event => {
     if (event.target.matches('.intellist input')) {
         let checkedRb = document.querySelector('.intellist input:checked');
@@ -264,7 +264,14 @@ window.addEventListener('change', event => {
         checkedRb = document.querySelector('.amdlist input:checked');
         processor = checkedRb.value;
     }
-})
+    if (event.target.matches('.asuslist input')) {
+        checkedRb = document.querySelector('.list input:checked');
+        mother = checkedRb.value;
+        console.log(mother);
+    }
+});
+
+
 
  // Mark processors, that have the closest price, as recommended:
  function markClosest(

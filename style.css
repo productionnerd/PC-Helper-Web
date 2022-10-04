@@ -314,7 +314,7 @@ padding: 10px;
 	overflow-y: scroll;
 	overflow-x: hidden;
 	flex-direction: column;
-	height: 250px;
+	height: 350px;
 }
 
 .Processtext {
@@ -719,14 +719,14 @@ margin-right: 5px;
 	content: 'Select';
 	border-radius: 50vw;
 	color: white;
-	background-color: var(--main-solid);
+	background-color: var(--bg);
 	border: none;
 	padding: 2.5px 12.5px;
 	cursor: pointer;
 	font-family: 'poppins';
-	outline: 2px solid white;
+	outline: 2px solid var(--main-solid);
     transition: 0.5s ease;
-	margin-left: 200px;
+	margin-left: 50px;
 }
 
 .intellist input:checked~label::after {
@@ -763,14 +763,14 @@ margin-bottom: 10px;
 	content: 'Select';
 	border-radius: 50vw;
 	color: white;
-	background-color: var(--main-solid);
+	background-color: var(--bg);
 	border: none;
 	padding: 2.5px 12.5px;
 	cursor: pointer;
 	font-family: 'poppins';
-	outline: 2px solid white;
+	outline: 2px solid var(--main-solid);
     transition: 0.5s ease;
-	margin-left: 200px;
+	margin-left: 50px;
 }
 
 
@@ -797,6 +797,51 @@ margin-bottom: 10px;
 
 }
 
+.list label {
+	transition: 0.5s ease;
+	display: flex;
+    flex-direction: row;
+	color: white;
+}
+
+.list label::after {
+	content: 'Select';
+	border-radius: 50vw;
+	color: white;
+	background-color: var(--bg);
+	border: none;
+	padding: 2.5px 12.5px;
+	cursor: pointer;
+	font-family: 'poppins';
+	outline: 2px solid var(--main-solid);
+    transition: 0.5s ease;
+	margin-left: 50px;
+}
+
+
+.list input:checked~label::after {
+	content: 'Selected';
+  	background-color: var(--dark-solid);
+ 	color: white;
+  	outline: 2px solid var(--dark-solid);
+}
+
+.listul {
+list-style: none;
+display: flex;
+flex-direction: column;
+column-gap: 80px;
+}
+
+.listul input {
+	display: none;
+}
+
+.list {
+margin-bottom: 10px;
+
+}
+
 .spendtext {
 	color: white;
 	background-color: var(--bg);
@@ -811,7 +856,7 @@ margin-bottom: 10px;
 	margin-left: 20px;
 	border-radius: 50vw;
 	position: relative;
-	left: 5%;
+	left: 2%;
 }
 
 .innerline {
@@ -822,12 +867,15 @@ margin-bottom: 10px;
 }
 
 .processor-list .reccommended:not(.visi) {
-	display: none;
+	opacity: 0%;
 }
 
 @media (max-height: 850px) {
 	.nextback {
 		height: 5%;
+	}
+	.productContainer {
+		height: 250px;
 	}
 }
 
